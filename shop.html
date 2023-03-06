@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <title>Shop</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    
+    let products = [
+        {
+            name: "Annie Rosewood",
+            image: "https://fdcdn.akamaized.net/m/780x1170/products/30734/30733175/images/res_2073c8a5be8f52147426448b397ff3d4.jpg?s=t4OzrGTWvBKd",
+            description: "Часовник Annie Rosewood в розово златисто",
+            price: "683.99 лв.",
+            color: "rgb(222,175,140)",
+            rate: 4
+        },
+        {
+            name: "Steve Madden",
+            image: "https://fdcdn.akamaized.net/m/780x1170/products/51673/51672920/images/res_634dd066e0fc234e1419d33364692ded.jpg?s=LQziqvd5No3Y",
+            description: "Спортни обувки Possession от еко кожа с мрежести зони",
+            price: "233.99 лв.",
+            color: "orange",
+            rate: 5
+        },
+        {
+            name: "GUESS JEANS",
+            image: "https://fdcdn.akamaized.net/m/780x1170/products/41644/41643782/images/res_91bd093555530cdb024f38f9394b833c.jpg?s=Qw1FzgKo8Bru",
+            description: "Тениска с принт на лога и декоративни камъни",
+            price: "155.99 лв.",
+            color: "red",
+            rate: 3
+        },
+
+    ]
+
+
+    for (let i = 0; i < products.length; i++) {
+        let product = products[i];
+        let container = document.createElement("div");
+        container.className = "containers";
+        document.body.appendChild(container);
+
+        let image = document.createElement("img");
+        image.className = `images`;
+        image.src = product.image;
+        container.appendChild(image);
+
+        let heading = document.createElement("h3");
+        heading.className = `headings`;
+        heading.innerText = product.name.toLocaleUpperCase();
+        container.appendChild(heading);
+
+        let description = document.createElement("p");
+        description.className = "descriptions"
+        description.innerText = product.description;
+        container.appendChild(description);
+
+        let price = document.createElement("p");
+        price.className = `prices`;
+        price.innerText = product.price;
+        price.style.color = product.color;
+        container.appendChild(price);
+
+        let starsHolder = document.createElement("div");
+        starsHolder.className = "stars-container";
+        let rating = product.rate;
+
+        for (let i = 1; i <= 5; i++) {
+            let star = document.createElement("span");
+            star.className = "material-icons";
+            star.innerText = "star";
+
+            if (i <= rating) {
+                star.style.color = "rgb(255,215,26)";
+            } else {
+                star.style.color = "rgb(148,161,173,0.5)";
+            }
+            starsHolder.appendChild(star);
+        }
+        container.appendChild(starsHolder);
+
+        let button = document.createElement("button");
+        button.className = "buttons";
+        button.style.backgroundColor = product.color;
+        container.appendChild(button);
+    }
+    
+
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.fontFamily = "Roboto, sans-serif";
+
+    let containers = document.querySelectorAll(".containers");
+    containers.forEach(container => {
+        container.style.alignContent = "center";
+        container.style.height = "580px";
+        container.style.width = "380px";
+        container.style.border = "1px solid grey";
+        container.style.position = "relative";
+        container.style.margin = "300px 50px";
+        container.style.border = "none";
+        container.style.boxShadow = "3px 3px 5px 6px #ccc";
+
+    });
+
+    let starsContainers = document.querySelectorAll(".stars-container");
+    starsContainers.forEach(starsContainer => {
+        starsContainer.style.display = "flex";
+        starsContainer.style.justifyContent = "center";
+    })
+
+    let images = document.querySelectorAll(".images");
+    images.forEach(image => {
+        image.style.display = "block";
+        image.style.width = "48%";
+        image.style.height = "auto";
+        image.style.margin = "auto";
+    });
+
+    let productHeadings = document.querySelectorAll(".headings");
+    productHeadings.forEach(heading => {
+        heading.style.fontWeight = "600";
+        heading.style.textAlign = "center";
+        heading.style.fontSize = "20px";
+    });
+
+    let productDescriptions = document.querySelectorAll(".descriptions");
+    productDescriptions.forEach(description => {
+        description.style.fontSize = "16px";
+        description.style.padding = "0 30px 0 30px";
+        description.style.textAlign = "center";
+        description.style.color = "rgb(54,55,56)";
+    });
+
+    let productPrices = document.querySelectorAll(".prices");
+    productPrices.forEach(price => {
+        price.className = "elementPrice";
+        price.style.textAlign = "center"
+        price.style.fontSize = "24px";
+    });
+
+    let stars = document.querySelectorAll(".stars");
+    stars.forEach(star => {
+        star.style.fontSize = "14px";
+    });
+
+    let buttons = document.querySelectorAll(".buttons");
+    buttons.forEach(button => {
+        button.innerText = "ADD TO CART";
+        button.style.width = "100%";
+        button.style.height = "15%";
+        button.style.color = "white";
+        button.style.fontSize = "16px";
+        button.style.fontWeight = "600";
+        button.style.alignItems = "center";
+        button.style.position = "absolute";
+        button.style.bottom = "0px";
+        button.style.border = "none";
+    });
+
+</script>
